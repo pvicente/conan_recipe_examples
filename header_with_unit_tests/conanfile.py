@@ -1,5 +1,6 @@
 from conans import ConanFile, CMake
 
+
 class HelloConan(ConanFile):
     name = "Hello"
     version = "0.1"

@@ -1,4 +1,4 @@
-from conans import ConanFile, CMake
+from conans import ConanFile, CMake, tools
 
 
 class HelloConan(ConanFile):
@@ -12,7 +12,8 @@ class HelloConan(ConanFile):
         cmake = CMake(self)
         cmake.configure()
         cmake.build()
-        cmake.test()
+        if tools.get_env("CONAN_RUN_TEST", True):
+            cmake.test()
 
     def package(self):
         self.copy("*.h")
